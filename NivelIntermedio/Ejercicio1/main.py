@@ -36,23 +36,43 @@ while isActive:
     else:
         if opMenu == 1:
             os.system("cls")
-            rc.regCiudad(informeSismico)
+            try:
+                rc.regCiudad(informeSismico)
+            except ValueError:
+                print("[!] Has ingresado un valor incorrecto")
+                os.system("pause")
 
         elif opMenu == 2:
             os.system("cls")
-            nombreCiudad = str(input("Ingresa el nombre de la ciudad a la cual registrar sismos: "))
-            rs.regSismos(nombreCiudad, informeSismico)
+            try:
+                rs.regSismos(informeSismico)
+            except ValueError:
+                print("[!] Has ingresado un valor incorrecto")
+                os.system("pause")
 
         elif opMenu == 3:
-            pass
-            os.system("pause")
+            try:
+                os.system("cls")
+                nombreCiudad = str(input("[*] Ingresa la ciudad para buscar sus sismos: "))
+            except ValueError:
+                print("[!] Has ingresado un valor incorrecto")
+                os.system("pause")
+            else:
+                menu.menuBuscarSismos(nombreCiudad, informeSismico)
         
-        elif opMenu == 4:
-            pass
-            os.system("pause")
+        elif opMenu == 4: 
+            try:
+                os.system("cls")
+                nombreCiudad = str(input("[*] Ingresa la ciudad para buscar sus sismos: "))
+            except ValueError:
+                print("[!] Has ingresado un valor incorrecto")
+                os.system("pause")
+            else:
+                menu.menuInformeSismico(nombreCiudad, informeSismico)
+
         
         elif opMenu == 5:
             os.system("pause")
             print("[!] Has seleccionado salir del programa")
             break
-
+ 

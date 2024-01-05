@@ -4,32 +4,42 @@ import os
 sismos = []
 
 
-def regSismos(nombre:str, ciudades:list):
-    isActiveRegSismos = True
+def regSismos(ciudades:list):
     nsis = 0
-
+    isActiveRegSismos = True
     nSismos = int(input("Ingresa el numero de sismos para cada ciudad: "))
+    header="""
+    ************************
+    *   REGISTRAR SISMOS   *
+    ************************
+    """
 
     while isActiveRegSismos:
+        print(header)
         for item in ciudades:
 
-            if nombre in item:
-                idx = ciudades.index(item)
+            idx = ciudades.index(item)
 
-                for i in range(0,nSismos):
-                    sismo = float(input(f"Ingresa la categoria del sismo #{i+1}: "))
-                    nsis = nsis+1
+            for i in range(0,nSismos):
+                sismo = float(input(f"Ingresa la categoria del sismo #{i+1} para la ciudad [{item[0]}]: "))
+                nsis = nsis+1
 
-                    ciudades[idx].append(sismo)
+                ciudades[idx].append(sismo)
 
-                if nsis >= nSismos:
-                    print("[!] Has alcanzado el limite de ciudades")
-                    isActiveRegSismos = False
-                else:
-                    print("[!] No se ha encontrado la ciudad")
-                    isActiveRegSismos = False
-    print(ciudades)
+            if nsis >= nSismos:
+                print("[!] Has alcanzado el limite de sismos")
+                isActiveRegSismos = False
     os.system("pause")
 
-def categorizarSismo(categoria:int)->int:
-    pass
+def categorizarSismo(pSismos:float)->str:
+    categoria = ""
+
+    if pSismos > 2.5:
+        categoria = "\033[93m[ AMARILLO ] - SIN RIESGO\033[0m"
+    elif pSismos >= 2.5 and pSismos < 4.5:
+        categoria = "\033[33;91m[ NARNAJA ] - RIESGO MEDIO\033[0m"
+    elif pSismos >= 4.5:
+        categoria = "\033[91m[ ROJO ] - RIESGO ALTO\033[0m"
+
+    return categoria
+
