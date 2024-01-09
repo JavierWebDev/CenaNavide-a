@@ -1,4 +1,5 @@
 import os
+import json
 import ui.mainMenu as mainm
 import ui.camperMenu as camperm
 import functions.manageCampers as mc
@@ -6,9 +7,11 @@ import functions.corefile as cf
 
 campus = {
     'campus': {
+        'campers':{}
 
     }
 }
+mc.core.checkFile(campus)
 
 def main():
     isActiveApp = True
@@ -19,8 +22,8 @@ def main():
         opMainMenu = mainm.mainMenu()
         
         if opMainMenu == 1:
-            mc.core.checkFile(campus)
-            camperm.menuRegistroCamper(campus['campus'])
+            
+            camperm.menuRegistroCamper(campus) 
             cf.AddData(campus)
             
 

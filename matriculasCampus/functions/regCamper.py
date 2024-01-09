@@ -4,7 +4,7 @@ import functions.corefile as core
 
 campers= {}
 
-def regCamper()->dict:
+def regCamper(campus:dict)->dict:
     isActive = True
     while isActive:
         try:
@@ -91,7 +91,7 @@ def regCamper()->dict:
                     rta = "N"
                     isActive = False
             print("\n\033[92m[ ACUDIENTE REGISTRADO CORRECTAMENTE ]\033[0m")
-
             isActive = False
             camper.update(telefonos)
+            mc.NewCamper(camper)
             return {camper['ID']:camper}

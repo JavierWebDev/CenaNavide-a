@@ -1,6 +1,7 @@
 import os
 import functions.regCamper as regCamper
-import functions.manageCampers as manage
+import functions.manageCampers as mc
+import functions.corefile as cf
 
 def menuRegistroCamper(campus:dict):
     header = '''
@@ -15,11 +16,11 @@ def menuRegistroCamper(campus:dict):
     isActiveRegCamper = True
     while isActiveRegCamper:
         print(header)
-        campus.update(regCamper.regCamper())
-        
+        mc.core.checkFile(campus)
+        camper = regCamper.regCamper(campus)
+        #campus.update(camper)
             
         isActiveRegCamper=False
-        os.system("pause")
 
 
         

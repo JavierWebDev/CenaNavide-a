@@ -1,0 +1,20 @@
+{
+    "campus": {
+        "campers": {}
+    },
+    "ID": 7,
+    "nombre": "James Bond",
+    "apellido": "Bond",
+    "acudiente": {
+        "ID": 1,
+        "nombre": "Damian",
+        "telefono": "3242232",
+        "email": "mail@mail.net"
+    },
+    "telefonos": [
+        {
+            "ubicacion": "Casa",
+            "numero": "423424243"
+        }
+    ]
+}
